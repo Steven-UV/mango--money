@@ -55,7 +55,7 @@ const CategorySection = styled.section`
     > li {
       width: 50%;
       text-align: center;
-      padding: 16x 0;
+      padding: 16px 0;
       position: relative;
       &.selected::after {
         content: "";
