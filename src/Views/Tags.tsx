@@ -3,6 +3,7 @@ import React from "react";
 import { useTags } from "useTags";
 import Icon from "../components/Icon";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const Button = styled.button`
   font-size: 18px;
@@ -24,12 +25,14 @@ const TagList = styled.ol`
   > li {
     border-bottom: 1px solid #d5d5d9;
     line-height: 20px;
-    padding: 12px 16px;
     margin-left: 16px;
     margin-right: 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    > a {
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
   }
 `;
 function Tags() {
@@ -39,8 +42,10 @@ function Tags() {
       <TagList>
         {tags.map((tag) => (
           <li key={tag}>
-            <span>{tag}</span>
-            <Icon name="right" />
+            <Link to={"/tags/" + tag}>
+              <span>{tag}</span>
+              <Icon name="right" />
+            </Link>
           </li>
         ))}
       </TagList>
