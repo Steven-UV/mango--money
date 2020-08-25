@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { prependOnceListener } from "process";
 
 const Label = styled.label`
   display: flex;
@@ -12,7 +11,7 @@ const Label = styled.label`
   > input {
     display: block;
     width: 100%;
-    height: 72px;
+    height: 44px;
     background: none;
     border: none;
   }
