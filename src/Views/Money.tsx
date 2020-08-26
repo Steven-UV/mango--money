@@ -58,7 +58,7 @@ function Money() {
       <NumberPadSection
         value={selected.amount}
         onChange={(amount) => onChange({ amount })}
-        onOK={submit}
+        onOk={submit}
       />
     </MyLayout>
   );
