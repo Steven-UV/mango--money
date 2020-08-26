@@ -5,14 +5,14 @@ type RecordItem = {
   note: string;
   category: "+" | "-";
   amount: number;
-  createdAt: String; // ISO 8601
+  createdAt: string; // ISO 8601
 };
 type newRecordItem = Omit<RecordItem, "createdAt">;
-export const useRecord = () => {
+export const useRecords = () => {
   const [records, setRecords] = useState<RecordItem[]>([]);
   useEffect(() => {
     setRecords(JSON.parse(window.localStorage.getItem("records") || "[]"));
-  });
+  }, []);
   useUpdate(() => {
     window.localStorage.setItem("records", JSON.stringify(records));
   }, [records]);
@@ -27,6 +27,7 @@ export const useRecord = () => {
     }
     const record = { ...newRecord, createdAt: new Date().toISOString() };
     setRecords([...records, record]);
+    return true;
   };
   return { records, addRecord };
 };

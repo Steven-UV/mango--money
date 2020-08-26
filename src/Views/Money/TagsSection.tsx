@@ -38,7 +38,7 @@ type Props = {
   value: number[];
   onChange: (selected: number[]) => void;
 };
-const TagSection: React.FC<Props> = (props) => {
+const TagsSection: React.FC<Props> = (props) => {
   const { tags, addTag } = useTags();
   const selectedTagIds = props.value;
   const onToggleTag = (tagId: number) => {
@@ -71,4 +71,4 @@ const TagSection: React.FC<Props> = (props) => {
   );
 };
 
-export { TagSection };
+export { TagsSection };

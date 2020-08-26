@@ -1,11 +1,11 @@
 import Layout from "components/Layout";
 import React, { useState } from "react";
 import styled from "styled-components";
-import { TagSection } from "./Money/TagsSection";
+import { TagsSection } from "./Money/TagsSection";
 import { NoteSection } from "./Money/NoteSection";
 import { CategorySection } from "./Money/CategorySection";
 import { NumberPadSection } from "./Money/NumberPadSection";
-import { useRecord } from "../components/hooks/useRecords";
+import { useRecords } from "../components/hooks/useRecords";
 
 const MyLayout = styled(Layout)`
   display: flex;
@@ -19,9 +19,14 @@ const defaultFormData = {
   category: "-" as Category,
   amount: 0,
 };
+
+const CategoryWrapper = styled.div`
+  background: #c4c4c4;
+`;
+
 function Money() {
   const [selected, setSelected] = useState(defaultFormData);
-  const { addRecord } = useRecord();
+  const { addRecord } = useRecords();
   const onChange = (obj: Partial<typeof selected>) => {
     setSelected({
       ...selected,
@@ -36,7 +41,7 @@ function Money() {
   };
   return (
     <MyLayout>
-      <TagSection
+      <TagsSection
         value={selected.tagIds}
         onChange={(tagIds) => onChange({ tagIds })}
       />
@@ -44,10 +49,12 @@ function Money() {
         value={selected.note}
         onChange={(note) => onChange({ note })}
       />
-      <CategorySection
-        value={selected.category}
-        onChange={(category) => onChange({ category })}
-      />
+      <CategoryWrapper>
+        <CategorySection
+          value={selected.category}
+          onChange={(category) => onChange({ category })}
+        />
+      </CategoryWrapper>
       <NumberPadSection
         value={selected.amount}
         onChange={(amount) => onChange({ amount })}
