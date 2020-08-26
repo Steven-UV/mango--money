@@ -60,5 +60,3 @@ const NumberPadSection: React.FC<Props> = (props) => {
 };
 
 export { NumberPadSection };
-
-// 000
